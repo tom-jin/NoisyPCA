@@ -8,20 +8,16 @@
 library(shiny)
 
 shinyUI(fluidPage(
-
   # Application title
-  titlePanel("Principal Component Analysis"),
+  titlePanel("Principal Component Analysis: Censored Count Data"),
 
   # Sidebar with a slider input for number of bins
   sidebarLayout(
    sidebarPanel(
-     sliderInput("g", "Groups:", min = 1, max = 20, value = 10),
-     sliderInput("n", "Observations:", min = 100, max = 2000, value = 200, step = 100),
-     sliderInput("p", "Variables:", min = 100, max = 20000, value = 2000, step = 100),
-     sliderInput("e", "Noise:", min = 0, max = 100, value = 0, animate = TRUE),
-     sliderInput("s", "Sparsity:", min = 1, max = 10, value = 1)
+     sliderInput("c", "Censorship:", min = 0, max = 0.99, value = 0, step = 0.01, animate = TRUE),
+     sliderInput("e", "Noise:", min = 0, max = 30, value = 0, animate = TRUE)
    ),
 
   # Show a plot of the generated distribution
-  mainPanel(plotOutput("plot", height = 1200))
+  mainPanel(plotOutput("plot"))
 )))
